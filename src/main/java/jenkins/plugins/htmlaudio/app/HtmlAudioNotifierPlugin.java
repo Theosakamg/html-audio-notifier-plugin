@@ -79,6 +79,7 @@ public final class HtmlAudioNotifierPlugin extends Plugin implements Describable
         private volatile boolean longPollingEnabled = false;
         private volatile String successSoundUrl = "";
         private volatile String successAfterFailureSoundUrl = "pop.wav";
+        private volatile String unstableSoundUrl = "";
         private volatile String failureSoundUrl = "horse.wav";
         
         
@@ -99,6 +100,7 @@ public final class HtmlAudioNotifierPlugin extends Plugin implements Describable
             longPollingEnabled = json.getBoolean("htmlAudioLongPollingEnabled");
             successSoundUrl = json.getString("htmlAudioSuccessSoundUrl");
             successAfterFailureSoundUrl = json.getString("htmlAudioSuccessAfterFailureSoundUrl");
+            unstableSoundUrl = json.getString("htmlAudioUnstableSoundUrl");
             failureSoundUrl = json.getString("htmlAudioFailureSoundUrl");
             save();
             return super.configure(req, json);
@@ -142,6 +144,16 @@ public final class HtmlAudioNotifierPlugin extends Plugin implements Describable
         
         public void setSuccessAfterFailureSoundUrl(String successAfterFailureSoundUrl) {
             this.successAfterFailureSoundUrl = successAfterFailureSoundUrl;
+        }
+        
+        
+        public String getUnstableSoundUrl() {
+            return unstableSoundUrl;
+        }
+        
+        
+        public void setUnstableSoundUrl(String unstableSoundUrl) {
+            this.unstableSoundUrl = unstableSoundUrl;
         }
         
         

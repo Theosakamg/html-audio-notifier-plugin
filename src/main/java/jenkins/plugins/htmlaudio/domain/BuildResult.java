@@ -13,26 +13,32 @@ public enum BuildResult {
     SUCCESS_AFTER_FAILURE {
         @Override
         protected boolean matches(Result current, Result previous) {
-            return current == Result.SUCCESS
-                && isFailure(previous);
+            return (current == Result.SUCCESS || current == Result.UNSTABLE)
+                && previous == Result.FAILURE;
         }
     },
-    
+
     FAILURE {
         @Override
         protected boolean matches(Result current, Result previous) {
-            return isFailure(current);
+            return current == Result.FAILURE;
         }
     },
-    
+
+    UNSTABLE {
+        @Override
+        protected boolean matches(Result current, Result previous) {
+            return current == Result.UNSTABLE;
+        }
+    },
+
     SUCCESS {
         @Override
         protected boolean matches(Result current, Result previous) {
             return current == Result.SUCCESS;
         }
     };
-    
-    
+
     /**
      * Returns a {@link BuildResult} matching a provided set of {@link Result}s or {@code null}.
      */
@@ -44,13 +50,6 @@ public enum BuildResult {
         }
         return null;
     }
-    
-    
-    private static boolean isFailure(Result r) {
-        return Result.FAILURE == r
-            || Result.UNSTABLE == r;
-    }
-    
-    
+
     protected abstract boolean matches(Result current, Result previous);
 }

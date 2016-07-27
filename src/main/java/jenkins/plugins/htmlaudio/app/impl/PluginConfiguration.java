@@ -46,6 +46,9 @@ public final class PluginConfiguration implements Configuration {
             case SUCCESS_AFTER_FAILURE:
                 return descriptor.getSuccessAfterFailureSoundUrl();
                 
+            case UNSTABLE:
+                return descriptor.getUnstableSoundUrl();
+                
             case FAILURE:
                 return descriptor.getFailureSoundUrl();
 

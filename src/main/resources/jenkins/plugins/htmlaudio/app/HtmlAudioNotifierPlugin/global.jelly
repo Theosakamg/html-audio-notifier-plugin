@@ -23,6 +23,12 @@
           <input type="button" value="Test" onClick="testSound('htmlAudioSuccessAfterFailureSoundUrl')" />
       </f:entry>
       
+      <f:entry title="Unstable sound URL" help="/plugin/html-audio-notifier/help-globalConfig-sounds.html">
+          <f:textbox id="htmlAudioUnstableSoundUrl" name="htmlAudioUnstableSoundUrl"
+            value="${descriptor.unstableSoundUrl}" />
+          <input type="button" value="Test" onClick="testSound('htmlAudioUnstableSoundUrl')" />
+      </f:entry>
+      
       <f:entry title="Failure sound URL" help="/plugin/html-audio-notifier/help-globalConfig-sounds.html">
           <f:textbox id="htmlAudioFailureSoundUrl" name="htmlAudioFailureSoundUrl"
             value="${descriptor.failureSoundUrl}" />
@@ -62,6 +68,7 @@
           function setTheme(success, successAfterFailure, failure) {
               document.getElementById('htmlAudioSuccessSoundUrl').value = success
               document.getElementById('htmlAudioSuccessAfterFailureSoundUrl').value = successAfterFailure
+              document.getElementById('htmlAudioUnstableSoundUrl').value = failure
               document.getElementById('htmlAudioFailureSoundUrl').value = failure
           }
       </script>
